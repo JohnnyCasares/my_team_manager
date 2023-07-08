@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "129797333121",
+    "project_id": "my-team-manager-f3fcb",
+    "storage_bucket": "my-team-manager-f3fcb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:129797333121:android:1f11a50359e078e9d8ed80",
+        "android_client_info": {
+          "package_name": "com.myteammanager.my_team_manager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "129797333121-vhf24kjcg840373h7cgoee0guiisgld9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4oaFvNjZ0Avu0kaLkyysvudkdJpjjquk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "129797333121-vhf24kjcg840373h7cgoee0guiisgld9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
