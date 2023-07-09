@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(useMaterial3: true, colorScheme: TeamManagerTheme.lightColorScheme),
       darkTheme: ThemeData(useMaterial3: true, colorScheme: TeamManagerTheme.darkColorScheme),
-      title: 'Flutter Demo',
+      title: 'My Team Manager',
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
 
