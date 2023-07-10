@@ -26,17 +26,22 @@ class _MyTextFieldState extends State<MyTextField> {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(10),
-        child: TextFormField(
-          readOnly: widget.readOnly??false,
-          onTap: widget.function ,
-          decoration: InputDecoration(
-              hintText: widget.hint,
-              prefixIcon: Icon(widget.icon),
-              helperText: widget.helperText,
-              border: const OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(5)))),
-          obscureText: widget.obscureText ?? false,
-          controller: widget.controller,
+        child: Container(
+          width: 700,
+          child: TextFormField(
+
+            readOnly: widget.readOnly??false,
+            onTap: widget.function ,
+            decoration: InputDecoration(
+
+                hintText: widget.hint,
+                prefixIcon: Icon(widget.icon),
+                helperText: widget.helperText,
+                border: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(5)))),
+            obscureText: widget.obscureText ?? false,
+            controller: widget.controller,
+          ),
         ));
   }
 }

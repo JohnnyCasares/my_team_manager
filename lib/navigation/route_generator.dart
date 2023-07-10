@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_team_manager/main.dart';
 import 'package:my_team_manager/pages/args_test.dart';
-import 'package:my_team_manager/pages/signup.dart';
+import 'package:my_team_manager/pages/signUp/signup.dart';
 
 import '../pages/main_page.dart';
 

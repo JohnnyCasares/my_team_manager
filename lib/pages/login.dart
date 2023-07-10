@@ -16,20 +16,38 @@ class _LoginState extends State<Login> {
       body: Center(
         child: Column(
           children: [
-            Text("My Team Manager",),
-            Spacer(),
-            Image.asset('images/soccer_logo.png', scale: 2,),
-
-            MyTextField(hint: 'User Name', icon: Icons.person,),
-            MyTextField(hint: 'Password', icon: Icons.lock,obscureText: true, helperText: 'Password must be at least 6 characters',),
-
-            ElevatedButton(onPressed: (){Navigator.of(context).popAndPushNamed('/mainPage');}, child: Text("Login")),
-
-            Spacer(),
-
-            Align(alignment: Alignment.bottomCenter, child:TextButton(onPressed: (){Navigator.of(context).pushNamed("/signUp");}, child: Text('Create an account')) ,)
-
-
+            const Text(
+              "My Team Manager",
+            ),
+            const Spacer(),
+            Image.asset(
+              'images/soccer_logo.png',
+              scale: 2,
+            ),
+            const MyTextField(
+              hint: 'User Name',
+              icon: Icons.person,
+            ),
+            const MyTextField(
+              hint: 'Password',
+              icon: Icons.lock,
+              obscureText: true,
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).popAndPushNamed('/mainPage');
+                },
+                child: const Text("Login")),
+            const Spacer(),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed("/signUp");
+                  },
+                  child: const Text('Create an account')),
+            ),
+            const Spacer(),
           ],
         ),
       ),
