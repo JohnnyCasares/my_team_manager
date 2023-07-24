@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+
 class AppUser {
   String name;
-  String? position;
+  Map<String, String>? position;
   List? teams;
-  String imageURL;
+  String? imageURL;
   String? nfcUID;
-  AppUser({required this.name, this.position, this.teams, this.nfcUID, required this.imageURL});
+  AppUser(
+      {required this.name,
+      this.position,
+      this.teams,
+      this.nfcUID,
+      this.imageURL});
 }
 
 class UserItem extends StatefulWidget {
@@ -17,28 +23,32 @@ class UserItem extends StatefulWidget {
 }
 
 class _UserItemState extends State<UserItem> {
+  List<String>? positionList;
+  String? positionText;
+
+
   @override
   Widget build(BuildContext context) {
+
+    if (widget.userData.position != null) {
+      positionList = widget.userData.position!.keys.toList();
+      positionText = positionList.toString();
+      positionText = positionText!.substring(1, positionText!.length - 1);
+
+    }
+
     return Card(
       child: Column(
         children: [
-          Image.network(widget.userData.imageURL),
+          widget.userData.imageURL != null
+              ? Image.network(widget.userData.imageURL!)
+              : const SizedBox(), //TODO: change sized box to default icon svg in images/assets
           Text(widget.userData.name),
-          Text(widget.userData.position??'No preferred position'),
-          Text(widget.userData.nfcUID??'Get an NFC tag'),
+          Text(positionText ?? 'No preferred position'),
+          Text(widget.userData.nfcUID ?? 'Get an NFC tag'),
           //TODO: DISPLAY TEAMS
-
         ],
       ),
     );
-
-
-
-
-
-
   }
 }
-
-
-

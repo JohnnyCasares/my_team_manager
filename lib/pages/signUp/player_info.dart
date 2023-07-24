@@ -3,29 +3,38 @@ import 'package:flutter/material.dart';
 import '../../constants/soccer.dart';
 import '../../custom widgets/my_text_field.dart';
 
-
 class PlayerData extends StatefulWidget {
-  const PlayerData({super.key});
+  const PlayerData(
+      {super.key,
+      required this.nameController,
+      required this.positionController,
+      required this.positions});
+  final TextEditingController nameController;
+  final TextEditingController positionController;
+  final Function(Map<String, String>) positions;
 
   @override
   State<PlayerData> createState() => _PlayerDataState();
 }
 
 class _PlayerDataState extends State<PlayerData> {
-  TextEditingController preferredPositions = TextEditingController();
-  List<String> myPositions = [];
+  Map<String, String> myPositions = {};
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return SingleChildScrollView(
+        child: Column(
       children: [
-        const Text("Player Info"),
-        const MyTextField(
+        const Center(child: Text("Player Info")),
+        MyTextField(
           hint: 'Enter your name',
           icon: Icons.text_fields,
+          controller: widget.nameController,
         ),
+
+        //Positions
         MyTextField(
-          controller: preferredPositions,
+          controller: widget.positionController,
           hint: 'Select your preferred position',
           icon: Icons.directions_run,
           readOnly: true,
@@ -36,13 +45,16 @@ class _PlayerDataState extends State<PlayerData> {
                   return const PositionDialogSelection();
                 });
             //Get positions selected by user and populate text box with it
-            String positionText = myPositions.toString();
+            List<String> positionList = myPositions.keys.toList();
+            String positionText = positionList.toString();
             positionText = positionText.substring(1, positionText.length - 1);
-            preferredPositions.text = positionText;
+            widget.positionController.text = positionText;
+            //Return positions through functions
+            widget.positions(myPositions);
           },
         ),
       ],
-    );
+    ));
   }
 }
 
@@ -120,9 +132,7 @@ class _PositionDialogSelectionState extends State<PositionDialogSelection> {
               padding: const EdgeInsets.all(8.0),
               child: TextButton(
                 onPressed: () {
-                  List<String> myPositions = userSelection.keys.toList();
-
-                  Navigator.pop(context, myPositions);
+                  Navigator.pop(context, userSelection);
                 },
                 child: const Text('Save'),
               ),

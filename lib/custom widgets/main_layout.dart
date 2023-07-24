@@ -10,11 +10,11 @@ class MainLayout extends StatefulWidget {
   final NavigationRailLabelType labelType;
   const MainLayout(
       {super.key,
-        required this.body,
-        required this.selectedIndex,
-        required this.onDestinationSelected,
-        required this.labelType,
-        required this.title});
+      required this.body,
+      required this.selectedIndex,
+      required this.onDestinationSelected,
+      required this.labelType,
+      required this.title});
 
   @override
   State<MainLayout> createState() => _MainLayoutState();
@@ -31,24 +31,32 @@ class _MainLayoutState extends State<MainLayout> {
   Widget build(BuildContext context) {
     return OrientationBuilder(
       builder: (context, orientation) => Scaffold(
+        resizeToAvoidBottomInset: true,
         appBar: AppBar(
           title: Center(
               child: Text(
-                widget.title,
-                style: Theme.of(context).textTheme.displayMedium,
-              )),
+            widget.title,
+            style: Theme.of(context).textTheme.displayMedium,
+          )),
         ),
         bottomNavigationBar: orientation == Orientation.portrait
             ? BottomNavBar(
-          menuParameters: MenuParameters( selectedIndex: widget.selectedIndex, onDestinationSelected: widget.onDestinationSelected, menuOptions: menuOptions),
-        )
+                menuParameters: MenuParameters(
+                    selectedIndex: widget.selectedIndex,
+                    onDestinationSelected: widget.onDestinationSelected,
+                    menuOptions: menuOptions),
+              )
             : null,
         body: Row(
           children: [
             orientation != Orientation.portrait
                 ? SideNavBar(
-              menuParameters: MenuParameters( selectedIndex: widget.selectedIndex, onDestinationSelected: widget.onDestinationSelected, menuOptions: menuOptions, labelType: widget.labelType),
-            )
+                    menuParameters: MenuParameters(
+                        selectedIndex: widget.selectedIndex,
+                        onDestinationSelected: widget.onDestinationSelected,
+                        menuOptions: menuOptions,
+                        labelType: widget.labelType),
+                  )
                 : const SizedBox(),
             const VerticalDivider(
               width: 3,

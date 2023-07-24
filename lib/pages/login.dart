@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:form_validator/form_validator.dart';
 import 'package:my_team_manager/custom%20widgets/my_text_field.dart';
+import 'package:my_team_manager/services/firebase_services.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -10,35 +12,77 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+  }
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+// Create a global key that uniquely identifies the Form widget
+  // and allows validation of the form.
+  final _formKey = GlobalKey<FormState>();
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
+      body: SafeArea(
+        child: Center(
+          child: _body(),
+        ),
+      ),
+    );
+  }
+
+  _body() {
+    return Form(
+      key: _formKey,
+      child: SingleChildScrollView(
         child: Column(
           children: [
-            const Text(
-              "My Team Manager",
+            const Center(
+              child: Text(
+                "My Team Manager",
+              ),
             ),
-            const Spacer(),
+            // const Spacer(),
             Image.asset(
-              'images/soccer_logo.png',
-              scale: 2,
+              'assets/images/soccer_logo.png',
+              width: 150, // Adjust the width of the image to your desired size
+              height:
+                  150, // Adjust the height of the image to your desired size
             ),
-            const MyTextField(
-              hint: 'User Name',
-              icon: Icons.person,
+            MyTextField(
+              hint: 'Email',
+              icon: Icons.mail,
+              controller: emailController,
+              validator: ValidationBuilder()
+                  .email("Please enter a valid email")
+                  .build(),
             ),
-            const MyTextField(
+            MyTextField(
               hint: 'Password',
               icon: Icons.lock,
               obscureText: true,
+              controller: passwordController,
             ),
-            ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).popAndPushNamed('/mainPage');
-                },
-                child: const Text("Login")),
-            const Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SizedBox(
+                width: 700,
+                child: ElevatedButton(
+                    onPressed: () async {
+                      if (_formKey.currentState?.validate() ?? false) {
+                        await Authentication.signIn(
+                            emailController.text, passwordController.text);
+                      }
+                    },
+                    child: const Text("Login")),
+              ),
+            ),
+            // const Spacer(),
             Align(
               alignment: Alignment.bottomCenter,
               child: TextButton(
@@ -47,7 +91,7 @@ class _LoginState extends State<Login> {
                   },
                   child: const Text('Create an account')),
             ),
-            const Spacer(),
+            // const Spacer(),
           ],
         ),
       ),
