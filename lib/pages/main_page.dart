@@ -30,7 +30,7 @@ class _MainPageState extends State<MainPage> {
         try {
           player = AppUser(
               name: value['name'],
-              position:Map<String, String>.from(value['position'])  ,
+              position: Map<String, String>.from(value['position']),
               nfcUID: value['uid'],
               imageURL: value['imageUrl']);
         } on Exception catch (e) {
@@ -39,7 +39,6 @@ class _MainPageState extends State<MainPage> {
           print("Error in main_page.dart $e");
         }
       });
-
     });
   }
 

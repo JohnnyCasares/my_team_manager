@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:my_team_manager/custom%20widgets/models/users/user.dart';
 import 'package:my_team_manager/pages/signUp/picture.dart';
 import 'package:my_team_manager/pages/signUp/player_info.dart';
-import 'package:my_team_manager/pages/signUp/reg_info.dart';
+import 'package:my_team_manager/pages/signUp/account_info.dart';
 import 'package:my_team_manager/services/firebase_services.dart';
 
 class SignUp extends StatefulWidget {

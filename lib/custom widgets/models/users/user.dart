@@ -26,23 +26,35 @@ class _UserItemState extends State<UserItem> {
   List<String>? positionList;
   String? positionText;
 
-
   @override
   Widget build(BuildContext context) {
-
     if (widget.userData.position != null) {
       positionList = widget.userData.position!.keys.toList();
       positionText = positionList.toString();
       positionText = positionText!.substring(1, positionText!.length - 1);
-
     }
-
     return Card(
       child: Column(
         children: [
-          widget.userData.imageURL != null
-              ? Image.network(widget.userData.imageURL!)
-              : const SizedBox(), //TODO: change sized box to default icon svg in images/assets
+          SizedBox(
+            height: 100,
+            width: 100,
+            child: widget.userData.imageURL != null
+                ? ClipOval(
+                    child: SizedBox.fromSize(
+                      size: const Size.fromRadius(60), // Image radius
+                      child: Image.network(
+                        widget.userData.imageURL!,
+                        errorBuilder: (context, error, stackTrace) {
+                          // Show a placeholder image or error message
+                          return Image.asset('assets/images/profile_image.png');
+                        },
+                      ),
+                    ),
+                  )
+                : Image.asset('assets/images/profile_image.png'),
+          ),
+
           Text(widget.userData.name),
           Text(positionText ?? 'No preferred position'),
           Text(widget.userData.nfcUID ?? 'Get an NFC tag'),

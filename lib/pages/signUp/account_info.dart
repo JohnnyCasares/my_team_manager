@@ -21,7 +21,7 @@ class _UserDataState extends State<UserData> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const Center(child: Text("Registration Info")),
+          const Center(child: Text("Account Info")),
           MyTextField(
             hint: 'Email',
             icon: Icons.email,
