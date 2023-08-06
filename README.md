@@ -1,5 +1,5 @@
 # My Team Manager
-# Check it out here
+## Check it out here
 https://my-team-manager-f3fcb.web.app/#/
 ## Overview
 
