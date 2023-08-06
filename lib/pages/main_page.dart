@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_team_manager/custom%20widgets/main_layout.dart';
 import 'package:my_team_manager/pages/my_players.dart';
 import 'package:my_team_manager/pages/profile.dart';
+import 'package:my_team_manager/pages/search.dart';
 
 import '../custom widgets/models/users/user.dart';
 import 'home.dart';
@@ -54,7 +55,7 @@ class _MainPageState extends State<MainPage> {
     List<Widget> pages = [
       const Home(),
       const MyPlayers(),
-      const Text('Search'),
+      const Search(),
       Profile(player: player)
     ];
     return MainLayout(
