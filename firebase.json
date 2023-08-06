@@ -1,0 +1,9 @@
+{
+  "hosting": {
+    "site": "my-team-manager-f3fcb",
+    "source": ".",
+    "frameworksBackend": {
+      "region": "us-east1"
+    }
+  }
+}
