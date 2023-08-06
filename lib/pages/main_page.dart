@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_team_manager/custom%20widgets/main_layout.dart';
+import 'package:my_team_manager/pages/my_players.dart';
 import 'package:my_team_manager/pages/profile.dart';
 
 import '../custom widgets/models/users/user.dart';
@@ -52,7 +53,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     List<Widget> pages = [
       const Home(),
-      const Text('my players'),
+      const MyPlayers(),
       const Text('Search'),
       Profile(player: player)
     ];
